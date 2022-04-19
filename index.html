@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		function cargar() {
+	var xhr=new XMLHttpRequest();
+	
+    xhr.onreadystatechange = function()
+	{
+			if (xhr.readyState==4 && xhr.status==200) {
+			var nombres = xhr.responseText.split(",");
+
+			var obj_select =document.getElementsByTagName("select")[0];
+
+			for (i=0; i<nombres.length; i++ ){
+			var crear = document.createElement("option");
+			crear.innerHTML=nombres[i];
+			obj_select.appendChild(crear);
+			 }
+			}
+			
+	}
+	xhr.open("GET","nombres.txt");
+		xhr.send();		
+		
+	 }
+
+	</script>
+	<title>Desplegable con fotos</title>
+</head>
+<body onload="cargar();">
+<select></select>
+</body>
+</html>
